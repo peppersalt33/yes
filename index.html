@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Surprise for Keerthi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Pig SVG background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://www.svgrepo.com/show/381235/pig.svg') no-repeat center center/40vw;
+      opacity: 0.07;
+      z-index: 0;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 8vh auto;
+      background: rgba(255,255,255,0.92);
+      border-radius: 20px;
+      box-shadow: 0 6px 32px rgba(255,0,0,0.08);
+      padding: 2.5rem 2rem 2rem 2rem;
+      border: 2px solid #e63946;
+      text-align: center;
+    }
+    h1 {
+      color: #e63946;
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+    }
+    .question {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      color: #e63946;
+      font-weight: 600;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .cute-btn {
+      background: #fff;
+      border: 2px solid #e63946;
+      color: #e63946;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0.8em 1.7em;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(230,57,70,0.08);
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .cute-btn:hover {
+      background: #e63946;
+      color: #fff;
+      transform: scale(1.07);
+    }
+    .special-message {
+      font-size: 1.3rem;
+      color: #e63946;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      animation: fadeIn 1s;
+    }
+    .show-btn {
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 0.7em 1.6em;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(230,57,70,0.08);
+      transition: background 0.2s;
+    }
+    .show-btn:hover {
+      background: #b2182b;
+    }
+    .birthday-message {
+      margin-top: 2rem;
+      background: #fff0f0;
+      border: 1.3px dashed #e63946;
+      border-radius: 18px;
+      padding: 1.6rem 1.2rem;
+      color: #b2182b;
+      font-size: 0.65rem;
+      line-height: 1.6;
+      animation: fadeIn 1.2s;
+      text-align: left;
+      white-space: pre-line;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: none;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="main-container">
+    <h1>🐷 Happy Birthday?</h1>
+    <div class="question" id="question">Is it your Birthday?</div>
+    <div class="btn-group" id="btn-group">
+      <button class="cute-btn" id="yes-btn">🎉 Yes 🥳</button>
+      <button class="cute-btn" id="no-btn">🙈 No 🙈</button>
+    </div>
+    <div id="special-message" style="display:none;">
+      <div class="special-message">I've a special message for you!</div>
+      <button class="show-btn" id="show-btn">Show it to me 🎁</button>
+    </div>
+    <div id="birthday-message" class="birthday-message" style="display:none;">
+      <strong>Happy Birthday, Keerthi!!!</strong><br><br>
+      You’re probably wondering why one more fragrance—and this message too! Honestly, I have no idea either.<br><br>
+      I may not have looked at you like you were a watch (which, by the way, you made me return). But with this lipstick, I'm getting closer to you—literally close. :P<br><br>
+      Like the fragrance, I’d like to grow on you.<br>
+      Fresh and crisp, that clings onto you,<br>
+      A scent so sweet, it'll stick like glue,<br>
+      Staying around, like I hope to do.<br><br>
+      You see what I did there? Ha, I'm bit of a romantic, you know? Now please don't come with that ugly ass " haha, so funny. 👏👏" thingy.<br>
+      Also, you might be thinking that, I’ve already given you this perfume, but nope, this ain’t the same. If you look closely, the first one was Ballad, when our lives were lingering like an English lyric. This one’s 'Tragedy' now, like the distance between us. I’ve probably bored you enough by now. Anyway, I’ll leave you to enjoy with your girls by wishing you a very Happy Birthday again.
+    </div>
+  </div>
+  <script>
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
+    const btnGroup = document.getElementById('btn-group');
+    const specialMsg = document.getElementById('special-message');
+    const showBtn = document.getElementById('show-btn');
+    const birthdayMsg = document.getElementById('birthday-message');
+    const question = document.getElementById('question');
+
+    yesBtn.onclick = function() {
+      btnGroup.style.display = 'none';
+      specialMsg.style.display = 'block';
+    };
+    noBtn.onclick = function() {
+      // Repeat the question and show buttons again
+      btnGroup.style.display = 'flex';
+      specialMsg.style.display = 'none';
+      birthdayMsg.style.display = 'none';
+      question.textContent = 'Is it your Birthday?';
+    };
+    showBtn.onclick = function() {
+      specialMsg.style.display = 'none';
+      birthdayMsg.style.display = 'block';
+    };
+  </script>
+</body>
+</html>
